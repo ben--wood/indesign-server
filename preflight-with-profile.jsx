@@ -3,7 +3,7 @@
  * Run from the command line using sampleclient.exe that comes with InDesign Server
  * Make sure InDesign Server is running at the address and port you spcifiy in the -host parameter
  * 
- * > sampleclient -host localhost:18383 <file path>\\preflight-with-profile-debug.jsx indesignFilePath="<file path>\\<filename>.indd|idml"
+ * > sampleclient -host localhost:18383 <file path>\\preflight-with-profile.jsx indesignFilePath="<file path>\\<filename>.indd|idml"
  * 
  * Please note there are some hard coded file paths in the script below that you'll need to change.
  * 
@@ -21,6 +21,8 @@
  *  3. Attempts to preflight the InDesign file using the given profile
  *  4. Writes the preflight report file to disk at c:\\temp\\ids\\preflight-report.txt  
  *  
+ *  And it emits a lot of stuff to the console as it goes.
+ * 
  */
 
 app.consoleout("Init IDS test");
@@ -29,8 +31,8 @@ if (app.scriptArgs.isDefined("indesignFilePath")) {
     var indesignFilePath = app.scriptArgs.getValue("indesignFilePath");
 
     // TODO: replace these 
-    var profileFilePath = "c:\\temp\\ids\\sample-profile.idpp";
-    var preflightReportFilePath = "c:\\temp\\ids\\preflight-report.txt";
+    var profileFilePath = "c:\\temp\\sample-profile.idpp";
+    var preflightReportFilePath = "c:\\temp\\preflight-report.txt";
 
     app.consoleout("Opening " + indesignFilePath);
     var indesignFile = app.open(File(indesignFilePath));
